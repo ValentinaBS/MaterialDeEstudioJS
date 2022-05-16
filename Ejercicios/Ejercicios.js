@@ -16,9 +16,15 @@ sumatoria de todos sus números anteriores, incluso ese mismo.
 Ejemplo:
 • sumattion(3) debe retornar 6 porque hace (1 +2 +3)
 • sumattion(8) debe retornar 36 */
+function sumattion(num) {
+    let sumatoria = 0
+    for (let i = 1; i <= num; i++) {
+        sumatoria += i
+    }
+    return sumatoria
+}
 
 /*4. Nuevo Arreglo
-
 Debés crear una función llamada `nuevoArreglo` que reciba un número como parámetro y que devuelva
 un nuevo arreglo con tantos elementos como el número que le hayas pasado.
 Ejemplo:
