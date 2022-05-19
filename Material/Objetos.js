@@ -111,6 +111,11 @@ function multiplyAll(arr) {
 }
 multiplyAll([[1, 2], [3, 4], [5, 6, 7]]); // Anidación de bucles "for"
 
+
+// La palabra clave class declara una nueva función, a la cual se añade un constructor. 
+// Este constructor se invoca cuando new es llamado para crear un nuevo objeto.
+// El método constructor es un método especial para crear e inicializar un objeto creado con una clase.
+
 class Celular {
     constructor (color, peso, resPantalla, resCamara, ram){
         this.color = color;
@@ -141,7 +146,7 @@ class Celular {
     grabar() {
         alert(`Grabando con una resolución de ${this.resolucionDeCamara}`);
     }
-    mostrarInfo() {
+    get mostrarInfo() {
         return `
         Color:${this.color}
         Peso:${this.peso}
@@ -152,3 +157,24 @@ class Celular {
     }
 }
 celular1 = new Celular("rojo", "150g", "5 pulgadas", "full hd", "2GB")
+
+
+// Las funciones getter están destinadas a simplemente devolver (get) el valor de la variable privada de un objeto al usuario 
+// sin que el usuario acceda directamente a la variable privada.
+
+// Las funciones setter están destinadas a modificar (set) el valor de la variable privada de un objeto basado en el valor pasado a la función setter. 
+// Este cambio podría implicar cálculos, o incluso sobrescribir completamente el valor anterior.
+
+class Book {
+    constructor(author) {
+        this._author = author;
+    }
+    // getter
+    get writer() {
+        return this._author;
+    }
+    // setter
+    set writer(updatedAuthor) {
+        this._author = updatedAuthor;
+    }
+}
