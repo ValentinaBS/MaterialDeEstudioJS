@@ -29,3 +29,25 @@ const bicycle2 = {
         this.gear = newGear;
     }
 };
+
+// Crear una promesa de JavaScript. Cuando la tarea se completa, o cumples tu promesa o no la cumples.
+const myPromise = new Promise((resolve, reject) => { // Estos métodos se utilizan para determinar el resultado de la promesa. resolve: éxito, reject: fallo
+
+}); // En estado pending porque no hay una forma de completar la promesa.
+// Una promesa tiene tres estados: pending, fulfilled, y rejected
+const myPromise2 = new Promise((resolve, reject) => {
+    if(resolve) {
+        resolve("Promise was fulfilled");
+    } else {
+        reject("Promise was rejected");
+    }
+});
+
+// Manejar una promesa cumplida usando then
+makeServerRequest.then(result => {
+    console.log(result)
+});
+// Manejar una promesa rechazada usando catch
+makeServerRequest.catch(error => {
+    console.log(error)
+});

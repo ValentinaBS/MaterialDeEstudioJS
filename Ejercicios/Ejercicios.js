@@ -4,11 +4,31 @@ de 0 a 100 mostrando en la consola cada número del loop.
 En caso de que el número de la iteración sumado con el número pasado por parámetro, sea par,
 mostrá en la consola “El número x es par”. */
 
+function loopDePares(num){
+    for (let i = 0; i <= 100; i++) {
+        if (num % 2 === 0 && i === num) {
+            console.log(`El número ${num} es par`);
+        } else {
+            console.log(i)
+        }
+    }
+}
+
+
 /*2. Loop de impares con palabra
 Debés crear una función llamada loopDeImpares que reciba como parámetro un número y una palabra y
 haga un loop de 0 a 100 mostrando en la consola cada número del loop.
 Ahora, modificar el código para que, en caso de que ese número sumado con el número pasado por
 parámetro sea impar, muestre en la consola la palabra pasada por parámetro.*/
+function loopDeImpares(num, palabra){
+    for (let i = 0; i <= 100; i++) {
+        if (num % 2 !== 0 && i === num) {
+            console.log(palabra);
+        } else {
+            console.log(i)
+        }
+    }
+}
 
 /*3. Sumatoria
 Debés crear una función llamada `sumattion` que reciba un número como parámetro y que devuelva la
@@ -30,6 +50,9 @@ un nuevo arreglo con tantos elementos como el número que le hayas pasado.
 Ejemplo:
 • nuevoArreglo(5) debe retornar [1,2,3,4,5]
 • nuevoArreglo(10) debe retornar [1,2,3,4,5,6,7,8,9,10] */
+function nuevoArreglo(cantidad) {
+    
+}
 
 /*5. Similar String.split()
 Debés crear una función llamada `split` que reciba un `string` y simule el comportamiento de la función
