@@ -111,6 +111,13 @@ function multiplyAll(arr) {
 }
 multiplyAll([[1, 2], [3, 4], [5, 6, 7]]); // Anidación de bucles "for"
 
+/* this se refiere al objeto con el que el método está asociado: dog. Si el nombre del objeto se cambia a cat, no es necesario encontrar todas 
+las referencias a duck en el código. Hace que el código sea reutilizable y mas fácil de leer.*/
+let dog = {
+    name: "Spot",
+    numLegs: 4,
+    sayLegs: function() {return "This dog has " + this.numLegs + " legs.";}
+};
 
 // La palabra clave class declara una nueva función, a la cual se añade un constructor. 
 // Este constructor se invoca cuando new es llamado para crear un nuevo objeto.
@@ -156,15 +163,75 @@ class Celular {
         `;
     }
 }
-celular1 = new Celular("rojo", "150g", "5 pulgadas", "full hd", "2GB")
+let celular1 = new Celular("rojo", "150g", "5 pulgadas", "full hd", "2GB")
+// celular1 tiene todas las propiedades de Celular
 
+celular1 instanceof Celular; // true
+// Permite comparar un objeto con un constructor, devuelve true o false basado en si ese objeto fue creado o no con dicho constructor.
+
+let ownProps = [];
+for (let property in celular1) {
+    if(celular1.hasOwnProperty(property)) {
+    ownProps.push(property)
+}
+} // Mostrar propiedades directas en un array
+
+Celular.prototype.numPantallas = 1;
+// Todas las instancias de Celular tienen la propiedad numPantallas.
+// Una forma más eficiente es establecer el prototype a un nuevo objeto que ya contenga las propiedades.
+Bird.prototype = {
+    constructor: Bird, // Para verificar cuál función de constructor creó la instancia. 
+    numLegs: 2, 
+    eat: function() {
+        console.log("nom nom nom");
+    },
+    describe: function() {
+        console.log("My name is " + this.name);
+    }
+};
+Bird.prototype = Object.create(Animal.prototype); 
+let duck = new Bird("Donald"); // Establecer el prototipo prototype del subtipo
+duck.eat();
+
+// Para objetos no relacionados es mejor utilizar mixins. Un "mixin" permite a otros objetos utilizar una colección de funciones.
+let flyMixin = function(obj) {
+    obj.fly = function() {
+        console.log("Flying, wooosh!");
+    }
+};
+flyMixin(bird);
+flyMixin(plane);
+
+// Agrupar mixins en un módulo con funciones inmediatamente invocadas
+let motionModule = (function () {
+    return {
+        glideMixin: function(obj) {
+        obj.glide = function() {
+            console.log("Gliding on the water");
+        };
+        },
+        flyMixin: function(obj) {
+        obj.fly = function() {
+            console.log("Flying, wooosh!");
+        };
+        }
+    }
+})();
+motionModule.glideMixin(duck);
+duck.glide();
+
+// Crear propiedades privadas (closure)
+function Bird() {
+    let weight = 15;
+    this.getWeight = function() {
+        return weight
+    }
+}
 
 // Las funciones getter están destinadas a simplemente devolver (get) el valor de la variable privada de un objeto al usuario 
 // sin que el usuario acceda directamente a la variable privada.
-
 // Las funciones setter están destinadas a modificar (set) el valor de la variable privada de un objeto basado en el valor pasado a la función setter. 
 // Este cambio podría implicar cálculos, o incluso sobrescribir completamente el valor anterior.
-
 class Book {
     constructor(author) {
         this._author = author;
